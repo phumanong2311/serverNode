@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "target": "ES2020",
+    "sourceMap": true,
+    "outDir": "dist",
+    "emitDecoratorMetadata": true
+  },
+  "include": ["src/**/*"],
+  "lib": ["es2015"]
+}
