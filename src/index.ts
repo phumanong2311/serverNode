@@ -1,11 +1,19 @@
-import { AppDataSource } from "./data-source.js"
-import { User } from "./entity/User.js"
+import express, { response } from 'express'
+import user from './routes/user.js';
 
-AppDataSource.initialize().then(async () => {
+const app = express()
+const port = 4000
+// app.use("/user", user);
+app.use((req, res, next) => {
+    res.append('Access-Control-Allow-Origin', ['*']);
+    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.append('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
+app.get('/', () => {
+    response.send('hello')
+})
 
-
-    console.log("Here you can setup and run express / fastify / any other framework.")
-
-
-
-}).catch(error => console.log(error))
+app.listen(port, function(){
+    console.log('Your app running on port '+ port);
+})
