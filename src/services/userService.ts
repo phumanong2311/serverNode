@@ -1,6 +1,7 @@
 import { AppDataSource } from "../data-source.js"
 import { User } from "../entity/User.js"
 import bcrypt from 'bcrypt'
+
 const userRepository = AppDataSource.getRepository(User)
 type UserType = {
     firstName: string,
