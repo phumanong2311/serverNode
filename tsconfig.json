@@ -12,5 +12,8 @@
       "experimentalDecorators": true,
       "sourceMap": true
    },
+   "ts-node": {
+      "esm": true
+  },
    "include": ["src/**/*"],
 }
