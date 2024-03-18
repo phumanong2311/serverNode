@@ -1,5 +1,20 @@
-version: '1'
+version: '3.8'
+
 services:
+  nest:
+    container_name: nest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+     - ./src:/src
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgres://postgres:password@postgres:5432/product_management
+
   postgres:
     container_name: postgresql
     image: postgres:15
@@ -9,8 +24,9 @@ services:
       - db:/var/lib/postgresql/data
     restart: always
     environment:
-      - POSTGRES_PASSWORD=value
-      - POSTGRES_USERNAME=value
-      - POSTGRES_DB=value
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_DB=product_management
+
 volumes:
   db:
