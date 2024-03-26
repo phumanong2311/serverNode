@@ -19,21 +19,15 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
-  "mikro-orm": {
-    "configPaths": [
-      "./mikro-orm.config.ts",
-      "./dist/mikro-orm.config.js"
-    ]
-  },
   "dependencies": {
-    "@mikro-orm/core": "^6.1.10",
-    "@mikro-orm/nestjs": "^5.2.3",
-    "@mikro-orm/postgresql": "^6.1.10",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/typeorm": "^10.0.2",
+    "pg": "^8.11.3",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",

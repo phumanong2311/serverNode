@@ -1,19 +1,19 @@
 version: '3.8'
 
 services:
-  nest:
-    container_name: nest
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-     - ./src:/src
-    depends_on:
-      - postgres
-    environment:
-      - DATABASE_URL=postgres://postgres:password@postgres:5432/product_management
+  # nest:
+  #   container_name: nest
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #    - ./src:/src
+  #   depends_on:
+  #     - postgres
+  #   environment:
+  #     - DATABASE_URL=postgres://postgres:password@postgres:5432/product_management
 
   postgres:
     container_name: postgresql
