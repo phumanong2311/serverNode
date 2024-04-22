@@ -2,6 +2,16 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import {
+  Brand,
+  Cluster,
+  Contact,
+  Customer,
+  Genres,
+  Product,
+  User,
+} from './entities';
+import { SeederService } from './seeder/seeder.service';
 
 @Module({
   imports: [
@@ -12,11 +22,11 @@ import { AppService } from './app.service';
       username: 'postgres',
       password: 'password',
       database: 'product_management',
-      entities: [],
+      entities: [Brand, Cluster, Contact, Customer, Genres, Product, User],
       synchronize: true,
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, SeederService],
 })
 export class AppModule {}

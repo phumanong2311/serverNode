@@ -1,12 +1,12 @@
 import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
 import { BaseEntity } from './BaseEntity';
-import { ContactEntity } from './ContactEntity';
+import { Contact } from './ContactEntity';
 
 @Entity()
-export class CustomerEntity extends BaseEntity {
-  @OneToOne(() => ContactEntity)
+export class Customer extends BaseEntity {
+  @OneToOne(() => Contact)
   @JoinColumn()
-  contact: ContactEntity;
+  contact: Contact;
 
   @Column()
   debt: number;

@@ -1,13 +1,13 @@
 import { Column, Entity, JoinColumn, OneToMany } from 'typeorm';
 import { BaseEntity } from './BaseEntity';
-import { ClusterEntity } from './ClusterEntity';
+import { Cluster } from './ClusterEntity';
 
 @Entity()
-export class GenresEntity extends BaseEntity {
+export class Genres extends BaseEntity {
   @Column()
   name: string;
 
-  @OneToMany(() => ClusterEntity, (cluster) => cluster.genre)
+  @OneToMany(() => Cluster, (cluster) => cluster.genre)
   @JoinColumn()
-  clusters: ClusterEntity[];
+  clusters: Cluster[];
 }
