@@ -3,15 +3,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import {
-  Brand,
-  Cluster,
-  Contact,
-  Customer,
-  Genres,
-  Product,
-  User,
+  BrandEntity,
+  ClusterEntity,
+  ContactEntity,
+  CustomerEntity,
+  GenresEntity,
+  ProductEntity,
+  UserEntity,
 } from './entities';
-import { SeederService } from './seeder/seeder.service';
+import { DataSource } from 'typeorm';
 
 @Module({
   imports: [
@@ -22,11 +22,22 @@ import { SeederService } from './seeder/seeder.service';
       username: 'postgres',
       password: 'password',
       database: 'product_management',
-      entities: [Brand, Cluster, Contact, Customer, Genres, Product, User],
+      entities: [
+        BrandEntity,
+        ClusterEntity,
+        ContactEntity,
+        CustomerEntity,
+        GenresEntity,
+        ProductEntity,
+        UserEntity,
+      ],
       synchronize: true,
+      autoLoadEntities: false,
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, SeederService],
+  providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private dataSource: DataSource) {}
+}
