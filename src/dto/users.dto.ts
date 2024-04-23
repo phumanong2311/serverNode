@@ -27,5 +27,4 @@ export class UpdateUserDto {
   firstName?: string;
   lastName?: string;
   phoneNumber?: number;
-  updateTime?: Date;
 }
