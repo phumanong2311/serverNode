@@ -19,12 +19,12 @@ export class UserEntity extends BaseEntity {
   lastName: string;
 
   @Column()
-  phoneNumber: string;
+  phoneNumber: number;
 
   @Column()
   isVerifiedEmail: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   refreshToken: string;
 
   @Column({ default: false })

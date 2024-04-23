@@ -5,9 +5,9 @@ export class BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  created_time: Date;
+  @Column({ nullable: true })
+  created_time?: Date;
 
-  @Column()
-  updated_time: Date;
+  @Column({ nullable: true })
+  updated_time?: Date;
 }
