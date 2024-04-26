@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Patch, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Res,
+} from '@nestjs/common';
 import { Response } from 'express';
 import { CreateUserDto, UpdateUserDto } from 'src/dto/users.dto';
 import { UserEntity } from 'src/entities';
@@ -52,6 +61,26 @@ export class UsersController {
         status: 200,
         message: 'User updated successfully',
         data: updateUser,
+      });
+    } else {
+      return res.status(400).json({
+        status: 400,
+        message: 'User not found',
+      });
+    }
+  }
+
+  @Delete(':userId')
+  async delete(
+    @Param('userId') userId: number,
+    @Res() res: Response,
+  ): Promise<Response> {
+    const user = await this.usersService.findOne(userId);
+    if (user) {
+      await this.usersService.delete(userId);
+      return res.json({
+        status: 200,
+        message: 'User deleted successfully',
       });
     } else {
       return res.status(400).json({
