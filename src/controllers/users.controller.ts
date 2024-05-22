@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   Res,
 } from '@nestjs/common';
 import { Response } from 'express';
@@ -18,7 +19,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
-  async getAlls(): Promise<UserEntity[]> {
+  async getAlls(@Query: ): Promise<UserEntity[]> {
     return this.usersService.findAll();
   }
 
@@ -55,17 +56,17 @@ export class UsersController {
     @Res() res: Response,
   ): Promise<Response> {
     const user = await this.usersService.findOne(userId);
-    if (user) {
+    try {
       const updateUser = await this.usersService.update(userId, updateUserDto);
       return res.json({
         status: 200,
         message: 'User updated successfully',
         data: updateUser,
       });
-    } else {
+    } catch (error) {
       return res.status(400).json({
         status: 400,
-        message: 'User not found',
+        message: error?.message || error,
       });
     }
   }
